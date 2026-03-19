@@ -88,7 +88,8 @@ function RunnerGame:parseTile(tile, x, y)
                 local body = love.physics.newBody(g_World, x + o.x, y + o.y, "static")
                 local shape = love.physics.newPolygonShape(unpackPolygon(o.polygon))
                 love.physics.newFixture(body, shape)
-                table.insert(g_Walls, body)
+                
+                g_Walls:add(body)
                 
             end
             
@@ -109,11 +110,11 @@ function RunnerGame:parseObject(o)
         
     elseif o.type == "ball" then
         
-        table.insert(g_Balls, Ball.new(o.x, o.y))
+        g_Balls:add(Ball.new(o.x, o.y))
         
     elseif o.type == "trigger_cloner" then
         
-        table.insert(g_Cloners, Cloner.new(o.x, o.y, o.width, o.height))
+        g_Cloners:add(Cloner.new(o.x, o.y, o.width, o.height, o.properties["multiply"]))
         
     end
     

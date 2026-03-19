@@ -12,20 +12,12 @@ local function isCloner(other)
     return other and other.itemType and other.itemType == "cloner"
 end
 
-local function newBody(x, y)
+local function newBody(self, x, y)
     
     local body = love.physics.newBody(g_World, x, y, "dynamic")
     local shape = love.physics.newCircleShape(16)
     local fixture = love.physics.newFixture(body, shape, 1)
-    fixture:setUserData({
-        
-        beginContact = function (other)
-            if isCloner(other) then
-                print("ball hit cloner!")
-            end
-        end,
-        
-    })
+    fixture:setUserData(self)
     
     return body
     
@@ -38,7 +30,11 @@ local mtBall = { __index=Ball }
 function Ball.new(x, y)
     local self = setmetatable({}, mtBall)
     
-    self.body = newBody(x or 0, y or x or 0)
+    self.body = newBody(self, x or 0, y or x or 0)
+    
+    self.detectedCloners = setmetatable({}, { __mode='k' })
+    
+    self.multiplyAmount = 1
     
     return self
 end
@@ -57,6 +53,7 @@ function Ball:update(dt)
     local vx, vy = self.body:getLinearVelocity()
     self.body:applyForce(forceX - vx * 14, forceY - vy * 14)
     
+    self:multiply()
 end
 
 function Ball:draw()
@@ -65,6 +62,53 @@ end
 
 function Ball:destroy()
     self.body:destroy()
+end
+
+function Ball:beginContact(other)
+    if not isCloner(other) then
+        return
+    end
+    
+    if self.detectedCloners[other] then
+        return
+    end
+    
+    self.detectedCloners[other] = true
+    
+    self.multiplyAmount = other.multiplyAmount
+end
+
+function Ball:multiply()
+    if self.multiplyAmount == 1 then
+        return
+    end
+    
+    if self.multiplyAmount <= 0 then
+        self._dead = true
+        return
+    end
+    
+    for i = 1, (self.multiplyAmount - 1) do
+        
+        local x = self.body:getX()
+        local y = self.body:getY()
+        
+        if love.math.random() > 0.5 then
+            x = x + 10
+        else
+            x = x - 10
+        end
+        
+        local ball = Ball.new(x, y)
+        
+        for k, v in pairs(self.detectedCloners) do
+            ball.detectedCloners[k] = true
+        end
+        
+        g_Balls:add(ball)
+    end
+    
+    self.multiplyAmount = 1
 end
 
 function Ball:getDirToDestPoint()

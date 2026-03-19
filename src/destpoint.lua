@@ -1,5 +1,8 @@
 -- destpoint --
 
+local LIMIT_LEFT = 64
+local LIMIT_RIGHT = 704
+
 local DestPoint = {}
 local mtDestPoint = { __index=DestPoint }
 
@@ -20,11 +23,11 @@ function DestPoint:update(dt)
     
     if love.keyboard.isDown('d', "right") then
         
-        self.x = self.x + speedX * dt
+        self.x = math.min(self.x + speedX * dt, LIMIT_RIGHT)
         
     elseif love.keyboard.isDown('a', "left") then
         
-        self.x = self.x - speedX * dt
+        self.x = math.max(self.x - speedX * dt, LIMIT_LEFT)
         
     end
     

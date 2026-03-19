@@ -1,14 +1,14 @@
 -- cloner --
 
 
-local function newBody(x, y, width, height)
+local function newBody(x, y, width, height, multiplyAmount)
     
     local body = love.physics.newBody(g_World, x, y, "static")
     local shape = love.physics.newPolygonShape(0, 0, width, 0, width, height, 0, height)
     local fixture = love.physics.newFixture(body, shape)
     
     fixture:setSensor(true)
-    fixture:setUserData({ itemType="cloner" })
+    fixture:setUserData({ itemType="cloner", multiplyAmount=multiplyAmount })
     
     return body
     
@@ -18,7 +18,7 @@ end
 local Cloner = {}
 local mtCloner = { __index=Cloner }
 
-function Cloner.new(x, y, width, height)
+function Cloner.new(x, y, width, height, multiplyAmount)
     
     local self = setmetatable({}, mtCloner)
     
@@ -27,7 +27,11 @@ function Cloner.new(x, y, width, height)
     self.width = width
     self.height = height
     
-    self.body = newBody(self.x, self.y, self.width, self.height)
+    self.body = newBody(self.x,
+                        self.y,
+                        self.width,
+                        self.height,
+                        multiplyAmount or 2)
     
     return self
     
