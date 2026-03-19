@@ -8,11 +8,24 @@ local function dirTo(x1, y1, x2, y2)
     return math.cos(r), math.sin(r)
 end
 
+local function isCloner(other)
+    return other and other.itemType and other.itemType == "cloner"
+end
+
 local function newBody(x, y)
     
     local body = love.physics.newBody(g_World, x, y, "dynamic")
     local shape = love.physics.newCircleShape(16)
-    love.physics.newFixture(body, shape, 1)
+    local fixture = love.physics.newFixture(body, shape, 1)
+    fixture:setUserData({
+        
+        beginContact = function (other)
+            if isCloner(other) then
+                print("ball hit cloner!")
+            end
+        end,
+        
+    })
     
     return body
     

@@ -16,13 +16,13 @@ end
 function DestPoint:update(dt)
     
     local speedX = 250
-    local speedY = 75
+    local speedY = 106
     
-    if love.keyboard.isDown('d') then
+    if love.keyboard.isDown('d', "right") then
         
         self.x = self.x + speedX * dt
         
-    elseif love.keyboard.isDown('a') then
+    elseif love.keyboard.isDown('a', "left") then
         
         self.x = self.x - speedX * dt
         
@@ -30,7 +30,7 @@ function DestPoint:update(dt)
     
     self.y = self.y - speedY * dt
     
-    g_Camera.y = self.y - 300
+    g_Camera.y = self.y - 400
     
 end
 
