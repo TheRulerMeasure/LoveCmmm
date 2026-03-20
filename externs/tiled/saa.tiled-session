@@ -5,8 +5,8 @@
     },
     "activeFile": "maps/ab.tmx",
     "expandedProjectPaths": [
-        "maps",
-        "."
+        ".",
+        "maps"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -20,14 +20,14 @@
         },
         "maps/ab.tmx": {
             "expandedGroupLayers": [
-                4,
-                2
+                2,
+                4
             ],
-            "scale": 0.25,
+            "scale": 0.33,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 902,
-                "y": 3792
+                "x": 565.1515151515151,
+                "y": 1775.7575757575755
             }
         },
         "maps/saa_tt_sheet.tsx": {
@@ -39,7 +39,7 @@
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "D:/dev/lovemoney/assets/textures",
+    "last.exportedFilePath": "D:/dev/lovemoney/maps",
     "last.imagePath": "D:/dev/lovemoney/externs/tiled",
     "lastUsedTilesetExportFilter": "Lua files (*.lua)",
     "map.height": 96,

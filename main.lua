@@ -8,6 +8,9 @@ local Game = require "src.engines.game"
 function love.load()
     
     g_SprSaa = newSpriteSheet("assets/textures/saa_tt_sheet.png", 7, 2)
+    g_SprAnt = newSpriteSheet("assets/textures/ant_sheet.png", 2, 1)
+    g_SprCloud = newSpriteSheet("assets/textures/cloud.png")
+    g_SprStar = newSpriteSheet("assets/textures/star.png")
     g_PatchPal = newSpritePatch("assets/textures/pal.png", {
         left = 16,
         right = 16,
@@ -16,6 +19,9 @@ function love.load()
     })
     
     g_TilesetSaa = require("assets/textures/saa_tt_sheet")
+    
+    local font = love.graphics.newFont("assets/textures/pmpaact_sheet_sized export.fnt")
+    love.graphics.setFont(font)
     
     g_Game = Game.new("game_a", {
         

@@ -25,7 +25,16 @@ end
 
 local function endContact(a, b, coll)
     
+    local dataA = a:getUserData()
+    local dataB = b:getUserData()
     
+    if dataA and dataA.endContact then
+        dataA:endContact(dataB)
+    end
+    
+    if dataB and dataB.endContact then
+        dataB:endContact(dataA)
+    end
     
 end
 
@@ -44,6 +53,7 @@ return {
         g_TileLayers = {}
         g_Cloners = GobGroup.new()
         g_Balls = GobGroup.new()
+        g_BathBombs = GobGroup.new()
         g_DestPoint = DestPoint.new(0, 0)
         
         g_RunnerGame:initStage("ab")
@@ -52,8 +62,11 @@ return {
     update = function (dt)
         g_World:update(dt)
         
+        g_BathBombs:update(dt)
+        
         g_Balls:update(dt)
         g_DestPoint:update(dt)
+        
         g_Camera:update(dt)
     end,
     
@@ -66,6 +79,8 @@ return {
             end
             g_Balls:draw()
             g_Cloners:draw()
+            g_BathBombs:draw()
+            
             g_DestPoint:draw()
         
         love.graphics.pop()
@@ -77,6 +92,9 @@ return {
             table.remove(g_TileLayers, i)
         end
         g_TileLayers = nil
+        
+        g_BathBombs:destroy()
+        g_BathBombs = nil
         
         g_Walls:destroy()
         g_Walls = nil

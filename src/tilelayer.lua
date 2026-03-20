@@ -18,6 +18,8 @@ end
 
 function TileLayer:draw()
     
+    love.graphics.setColor(1, 1, 1, 1)
+    
     for i, tile in ipairs(self.data) do
         
         if tile > 0 then

@@ -1,6 +1,12 @@
 -- ball --
 
-local vector = require "lib.vector-light"
+local BathBomb = require "src.bathbomb"
+
+local BALL_RADIUS = 10
+
+local COLOR_GOOD = { 0.605, 0.6, 0.95, 1 }
+
+local SPEED = 1500
 
 
 local function dirTo(x1, y1, x2, y2)
@@ -15,7 +21,7 @@ end
 local function newBody(self, x, y)
     
     local body = love.physics.newBody(g_World, x, y, "dynamic")
-    local shape = love.physics.newCircleShape(16)
+    local shape = love.physics.newCircleShape(BALL_RADIUS)
     local fixture = love.physics.newFixture(body, shape, 1)
     fixture:setUserData(self)
     
@@ -36,28 +42,52 @@ function Ball.new(x, y)
     
     self.multiplyAmount = 1
     
+    self.animTime = 0
+    self.sprFacingRight = true
+    
+    self.teamGood = true
+    
     return self
 end
 
 function Ball:update(dt)
     
-    local dist = vector.dist(self.body:getX(), self.body:getY(), g_DestPoint.x, g_DestPoint.y) * 0.34
+    local mass = self.body:getMass()
     
     local dirX, dirY = self:getDirToDestPoint()
     
-    local forceX = dirX * dist * 200
-    local forceY = dirY * dist * 200
-    
-    forceX, forceY = vector.trim(2500, forceX, forceY)
+    local forceX = dirX * mass * SPEED
+    local forceY = dirY * mass * SPEED
     
     local vx, vy = self.body:getLinearVelocity()
-    self.body:applyForce(forceX - vx * 14, forceY - vy * 14)
+    forceX = forceX - vx * mass * 7
+    forceY = forceY - vy * mass * 7
+    self.body:applyForce(forceX, forceY)
     
     self:multiply()
+    
+    self.animTime = self.animTime + dt
+    
+    if vx > 50 then
+        self.sprFacingRight = true
+    elseif vx < -50 then
+        self.sprFacingRight = false
+    end
 end
 
 function Ball:draw()
-    love.graphics.circle("fill", self.body:getX(), self.body:getY(), 16)
+    love.graphics.setColor(COLOR_GOOD)
+    
+    local frame = (math.floor(self.animTime * 8) % 2) + 1
+    
+    local sx = self.sprFacingRight and 1 or -1
+    
+    g_SprAnt:drawCenter(frame,
+                        self.body:getX(),
+                        self.body:getY(),
+                        0,
+                        sx,
+                        1)
 end
 
 function Ball:destroy()
@@ -99,16 +129,39 @@ function Ball:multiply()
             x = x - 10
         end
         
-        local ball = Ball.new(x, y)
-        
-        for k, v in pairs(self.detectedCloners) do
-            ball.detectedCloners[k] = true
-        end
-        
-        g_Balls:add(ball)
+        self:putBallAt(x, y)
     end
     
     self.multiplyAmount = 1
+end
+
+function Ball:putBallAt(x, y)
+    
+    local ball = Ball.new(x, y)
+    for k, v in pairs(self.detectedCloners) do
+        ball.detectedCloners[k] = true
+    end
+    g_Balls:add(ball)
+    
+    local bomb = BathBomb.new(ball.body:getX(),
+                                ball.body:getY(),
+                                {
+                                    amount = 6,
+                                    
+                                    minSpeed = 400,
+                                    maxSpeed = 400,
+                                    
+                                    minLifeTime = 0.2,
+                                    maxLifeTime = 0.23,
+                                    
+                                    minRotateSpeed = 0,
+                                    maxRotateSpeed = 0,
+                                    
+                                    color = { 0.8, 0.7, 1, 1 },
+                                })
+    
+    g_BathBombs:add(bomb)
+    
 end
 
 function Ball:getDirToDestPoint()

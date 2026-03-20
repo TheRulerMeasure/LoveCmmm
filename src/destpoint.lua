@@ -22,13 +22,9 @@ function DestPoint:update(dt)
     local speedY = 106
     
     if love.keyboard.isDown('d', "right") then
-        
         self.x = math.min(self.x + speedX * dt, LIMIT_RIGHT)
-        
     elseif love.keyboard.isDown('a', "left") then
-        
         self.x = math.max(self.x - speedX * dt, LIMIT_LEFT)
-        
     end
     
     self.y = self.y - speedY * dt
@@ -38,6 +34,7 @@ function DestPoint:update(dt)
 end
 
 function DestPoint:draw()
+    love.graphics.setColor(0.2, 0.2, 0.2, 1)
     love.graphics.circle("line", self.x, self.y, 50, 50)
 end
 

@@ -1,6 +1,23 @@
 -- cloner --
 
 
+local function drawTextCenter(text, x, y)
+    
+    local font = love.graphics.getFont()
+    local textWidth = font:getWidth(text)
+    local textHeight = font:getHeight()
+    love.graphics.print(text,
+                        x,
+                        y,
+                        0,
+                        1,
+                        1,
+                        textWidth * 0.5,
+                        textHeight * 0.5)
+    
+end
+
+
 local function newBody(x, y, width, height, multiplyAmount)
     
     local body = love.physics.newBody(g_World, x, y, "static")
@@ -27,11 +44,13 @@ function Cloner.new(x, y, width, height, multiplyAmount)
     self.width = width
     self.height = height
     
+    self.multiplyAmount = multiplyAmount or 2
+    
     self.body = newBody(self.x,
                         self.y,
                         self.width,
                         self.height,
-                        multiplyAmount or 2)
+                        self.multiplyAmount)
     
     return self
     
@@ -39,7 +58,13 @@ end
 
 function Cloner:draw()
     
+    love.graphics.setColor(0.5, 0.5, 0.7, 0.6)
     g_PatchPal:draw(self.x, self.y, self.width, self.height)
+    
+    love.graphics.setColor(1, 1, 1, 1)
+    drawTextCenter("x" .. self.multiplyAmount,
+                    self.x + self.width * 0.5,
+                    self.y + self.height * 0.5)
     
 end
 

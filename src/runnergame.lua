@@ -3,6 +3,7 @@
 local gconst = require "src.gameconst"
 
 local Ball = require "src.ball"
+local BallBad = require "src.ballbad"
 local Cloner = require "src.cloner"
 local TileLayer = require "src.tilelayer"
 
@@ -111,6 +112,10 @@ function RunnerGame:parseObject(o)
     elseif o.type == "ball" then
         
         g_Balls:add(Ball.new(o.x, o.y))
+        
+    elseif o.type == "enemy" then
+        
+        g_Balls:add(BallBad.new(o.x, o.y))
         
     elseif o.type == "trigger_cloner" then
         
