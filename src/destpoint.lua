@@ -13,6 +13,8 @@ function DestPoint.new(x, y)
     self.x = x or 0
     self.y = y or x or 0
     
+    self.topReached = false
+    
     return self
 end
 
@@ -29,7 +31,21 @@ function DestPoint:update(dt)
     
     self.y = self.y - speedY * dt
     
-    g_Camera.y = self.y - 400
+    
+    
+    local counter = g_Counters.gobs[1]
+    if counter then
+        
+        if self.y >= counter.y then
+            g_Camera.y = self.y - 400
+        end
+        
+        if self.y < counter.y - 450 then
+            self.topReached = true
+        end
+    else
+        g_Camera.y = self.y - 400
+    end
     
 end
 

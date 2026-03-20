@@ -5,6 +5,7 @@ local gconst = require "src.gameconst"
 local Ball = require "src.ball"
 local BallBad = require "src.ballbad"
 local Cloner = require "src.cloner"
+local Counter = require "src.counter"
 local TileLayer = require "src.tilelayer"
 
 local TILE_WALL = 8
@@ -36,7 +37,38 @@ local mtRunnerGame = { __index=RunnerGame }
 function RunnerGame.new()
     
     local self = setmetatable({}, mtRunnerGame)
+    
+    self.curState = 1
+    self.stateTime = 0
+    
     return self
+end
+
+function RunnerGame:update(dt)
+    
+    if self.curState == 1 then
+        
+        
+        if g_DestPoint.topReached then
+            g_Game:setNextScene("menu")
+            
+        elseif #g_Balls.gobs <= 0 then
+            self.stateTime = 0
+            self.curState = 2
+        end
+        
+    elseif self.curState == 2 then
+        
+        if self.stateTime >= 2 then
+            g_Game:setNextScene("menu")
+        end
+        
+    end
+    
+    self.stateTime = math.min(self.stateTime + dt, 9999)
+end
+
+function RunnerGame:destroy()
     
 end
 
@@ -110,16 +142,16 @@ function RunnerGame:parseObject(o)
         g_Camera.y = g_DestPoint.y - gconst.CANVAS_HEIGHT * 0.5
         
     elseif o.type == "ball" then
-        
         g_Balls:add(Ball.new(o.x, o.y))
         
     elseif o.type == "enemy" then
-        
-        g_Balls:add(BallBad.new(o.x, o.y))
+        g_BallBads:add(BallBad.new(o.x, o.y))
         
     elseif o.type == "trigger_cloner" then
-        
         g_Cloners:add(Cloner.new(o.x, o.y, o.width, o.height, o.properties["multiply"]))
+        
+    elseif o.type == "counter" then
+        g_Counters:add(Counter.new(o.x, o.y, o.width, o.height))
         
     end
     

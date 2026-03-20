@@ -102,4 +102,8 @@ function BathBomb:draw()
     
 end
 
+function BathBomb:destroy()
+    
+end
+
 return BathBomb

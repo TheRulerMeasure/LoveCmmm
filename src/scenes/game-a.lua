@@ -52,6 +52,8 @@ return {
         g_Walls = GobGroup.new()
         g_TileLayers = {}
         g_Cloners = GobGroup.new()
+        g_Counters = GobGroup.new()
+        g_BallBads = GobGroup.new()
         g_Balls = GobGroup.new()
         g_BathBombs = GobGroup.new()
         g_DestPoint = DestPoint.new(0, 0)
@@ -62,8 +64,11 @@ return {
     update = function (dt)
         g_World:update(dt)
         
+        g_RunnerGame:update(dt)
+        
         g_BathBombs:update(dt)
         
+        g_BallBads:update(dt)
         g_Balls:update(dt)
         g_DestPoint:update(dt)
         
@@ -77,8 +82,10 @@ return {
             for i, layer in ipairs(g_TileLayers) do
                 layer:draw()
             end
+            g_BallBads:draw()
             g_Balls:draw()
             g_Cloners:draw()
+            g_Counters:draw()
             g_BathBombs:draw()
             
             g_DestPoint:draw()
@@ -87,6 +94,9 @@ return {
     end,
     
     leave = function ()
+        
+        g_RunnerGame:destroy()
+        g_RunnerGame = nil
         
         for i = #g_TileLayers, 1, -1 do
             table.remove(g_TileLayers, i)
@@ -98,10 +108,14 @@ return {
         
         g_Walls:destroy()
         g_Walls = nil
+        g_BallBads:destroy()
+        g_BallBads = nil
         g_Balls:destroy()
         g_Balls = nil
         g_Cloners:destroy()
         g_Cloners = nil
+        g_Counters:destroy()
+        g_Counters = nil
         g_World:destroy()
         g_World = nil
         

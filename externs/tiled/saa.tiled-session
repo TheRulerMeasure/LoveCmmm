@@ -5,8 +5,8 @@
     },
     "activeFile": "maps/ab.tmx",
     "expandedProjectPaths": [
-        ".",
-        "maps"
+        "maps",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -23,11 +23,11 @@
                 2,
                 4
             ],
-            "scale": 0.33,
+            "scale": 0.25,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 565.1515151515151,
-                "y": 1775.7575757575755
+                "x": 688,
+                "y": 1232
             }
         },
         "maps/saa_tt_sheet.tsx": {
