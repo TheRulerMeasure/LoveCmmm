@@ -8,6 +8,29 @@ local Camera = require "src.camera"
 local DestPoint = require "src.destpoint"
 
 
+local function tutUpdate(self, dt)
+    self.t = math.max(self.t - dt, 0)
+end
+
+local function tutDraw(self)
+    if self.t > 0 then
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.print("< A      D >", 174, 468)
+    end
+end
+
+local function newTutorial(active)
+    local self = {}
+    
+    self.update = tutUpdate
+    self.draw = tutDraw
+    
+    self.t = active and 8 or 0
+    
+    return self
+end
+
+
 local function beginContact(a, b, coll)
     
     local dataA = a:getUserData()
@@ -40,7 +63,8 @@ end
 
 
 return {
-    arrive = function ()
+    arrive = function (sceneData)
+        
         love.physics.setMeter(64)
         love.graphics.setBackgroundColor(0.78, 0.66, 0.65, 1)
         
@@ -58,7 +82,12 @@ return {
         g_BathBombs = GobGroup.new()
         g_DestPoint = DestPoint.new(0, 0)
         
-        g_RunnerGame:initStage("ab")
+        g_RunnerGame:initStage(sceneData.mapname, sceneData.level)
+        
+        g_MusicPuzzle:stop()
+        g_MusicPuzzle:play()
+        
+        g_Tutorial = newTutorial(sceneData.showTutorial)
     end,
     
     update = function (dt)
@@ -73,6 +102,8 @@ return {
         g_DestPoint:update(dt)
         
         g_Camera:update(dt)
+        
+        g_Tutorial:update(dt)
     end,
     
     draw = function ()
@@ -91,6 +122,8 @@ return {
             g_DestPoint:draw()
         
         love.graphics.pop()
+        
+        g_Tutorial:draw()
     end,
     
     leave = function ()
@@ -122,6 +155,8 @@ return {
         g_Camera = nil
         
         g_DestPoint = nil
+        
+        g_Tutorial = nil
     end,
     
     keypressed = function (key, scancode, isrepeat)

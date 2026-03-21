@@ -41,6 +41,8 @@ function RunnerGame.new()
     self.curState = 1
     self.stateTime = 0
     
+    self.curLevel = 0
+    
     return self
 end
 
@@ -50,6 +52,8 @@ function RunnerGame:update(dt)
         
         
         if g_DestPoint.topReached then
+            
+            g_Data.levels[self.curLevel].count = g_Counters.gobs[1].ballCount
             g_Game:setNextScene("menu")
             
         elseif #g_Balls.gobs <= 0 then
@@ -72,7 +76,9 @@ function RunnerGame:destroy()
     
 end
 
-function RunnerGame:initStage(mapname)
+function RunnerGame:initStage(mapname, curLevel)
+    
+    self.curLevel = curLevel
     
     local map = require("maps/" .. mapname)
     

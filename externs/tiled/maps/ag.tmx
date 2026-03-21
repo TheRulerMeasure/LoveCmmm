@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="12" height="52" tilewidth="64" tileheight="64" infinite="0" nextlayerid="10" nextobjectid="88">
+ <editorsettings>
+  <export target="../../../maps/ag.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" source="saa_tt_sheet.tsx"/>
+ <group id="2" name="Group Layer 1" locked="1">
+  <layer id="1" name="floor" width="12" height="52" locked="1">
+   <data encoding="csv">
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,0,0,0
+</data>
+  </layer>
+  <layer id="3" name="wall" width="12" height="52" locked="1">
+   <data encoding="csv">
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0,
+0,0,8,0,0,0,0,0,0,8,0,0
+</data>
+  </layer>
+ </group>
+ <group id="4" name="Group Layer 2">
+  <objectgroup color="#55ff00" id="5" name="Object Layer 1" locked="1">
+   <object id="1" name="Start" type="point_start" x="384" y="3008">
+    <point/>
+   </object>
+  </objectgroup>
+  <objectgroup id="6" name="Object Layer 2" locked="1">
+   <object id="2" type="ball" x="529.366" y="2993.25">
+    <point/>
+   </object>
+  </objectgroup>
+  <objectgroup color="#ffffff" id="7" name="Object Layer 3" locked="1">
+   <object id="3" name="x8" type="trigger_cloner" x="276" y="2636" width="140" height="36">
+    <properties>
+     <property name="multiply" type="int" value="8"/>
+    </properties>
+   </object>
+   <object id="4" name="x6" type="trigger_cloner" x="405.333" y="2188" width="140" height="36">
+    <properties>
+     <property name="multiply" type="int" value="6"/>
+    </properties>
+   </object>
+   <object id="6" name="x4" type="trigger_cloner" x="214.667" y="1738.67" width="140" height="36">
+    <properties>
+     <property name="multiply" type="int" value="4"/>
+    </properties>
+   </object>
+   <object id="7" name="x4" type="trigger_cloner" x="406.667" y="1290.67" width="140" height="36">
+    <properties>
+     <property name="multiply" type="int" value="4"/>
+    </properties>
+   </object>
+  </objectgroup>
+  <objectgroup color="#ff0000" id="8" name="Object Layer 4" locked="1">
+   <object id="8" type="enemy" x="297.333" y="2424">
+    <point/>
+   </object>
+   <object id="21" type="enemy" x="365.333" y="1952">
+    <point/>
+   </object>
+   <object id="16" type="enemy" x="292" y="2356">
+    <point/>
+   </object>
+   <object id="27" type="enemy" x="384" y="1928">
+    <point/>
+   </object>
+   <object id="9" type="enemy" x="322.667" y="2413.33">
+    <point/>
+   </object>
+   <object id="24" type="enemy" x="345.333" y="1930.67">
+    <point/>
+   </object>
+   <object id="18" type="enemy" x="317.333" y="2345.33">
+    <point/>
+   </object>
+   <object id="29" type="enemy" x="418.667" y="1986.67">
+    <point/>
+   </object>
+   <object id="30" type="enemy" x="373.333" y="1496">
+    <point/>
+   </object>
+   <object id="41" type="enemy" x="394.667" y="816">
+    <point/>
+   </object>
+   <object id="73" type="enemy" x="382.667" y="932">
+    <point/>
+   </object>
+   <object id="57" type="enemy" x="481.333" y="816">
+    <point/>
+   </object>
+   <object id="72" type="enemy" x="464" y="908">
+    <point/>
+   </object>
+   <object id="52" type="enemy" x="273.333" y="746.667">
+    <point/>
+   </object>
+   <object id="63" type="enemy" x="361.333" y="744">
+    <point/>
+   </object>
+   <object id="83" type="enemy" x="416" y="861.333">
+    <point/>
+   </object>
+   <object id="31" type="enemy" x="409.333" y="1525.33">
+    <point/>
+   </object>
+   <object id="39" type="enemy" x="448" y="800">
+    <point/>
+   </object>
+   <object id="75" type="enemy" x="533.333" y="922.667">
+    <point/>
+   </object>
+   <object id="53" type="enemy" x="330.667" y="712">
+    <point/>
+   </object>
+   <object id="65" type="enemy" x="429.333" y="756">
+    <point/>
+   </object>
+   <object id="87" type="enemy" x="308" y="844">
+    <point/>
+   </object>
+   <object id="32" type="enemy" x="412" y="1473.33">
+    <point/>
+   </object>
+   <object id="43" type="enemy" x="366.667" y="674.667">
+    <point/>
+   </object>
+   <object id="68" type="enemy" x="462.667" y="700">
+    <point/>
+   </object>
+   <object id="50" type="enemy" x="428" y="716">
+    <point/>
+   </object>
+   <object id="62" type="enemy" x="473.333" y="757.333">
+    <point/>
+   </object>
+   <object id="86" type="enemy" x="526.667" y="853.333">
+    <point/>
+   </object>
+   <object id="33" type="enemy" x="341.333" y="1458.67">
+    <point/>
+   </object>
+   <object id="44" type="enemy" x="282.667" y="678.667">
+    <point/>
+   </object>
+   <object id="67" type="enemy" x="378.667" y="704">
+    <point/>
+   </object>
+   <object id="49" type="enemy" x="322.667" y="665.333">
+    <point/>
+   </object>
+   <object id="61" type="enemy" x="425.333" y="826.667">
+    <point/>
+   </object>
+   <object id="76" type="enemy" x="425.333" y="916">
+    <point/>
+   </object>
+   <object id="34" type="enemy" x="338.667" y="1502.67">
+    <point/>
+   </object>
+   <object id="40" type="enemy" x="244" y="782.667">
+    <point/>
+   </object>
+   <object id="79" type="enemy" x="234.667" y="830.667">
+    <point/>
+   </object>
+   <object id="58" type="enemy" x="340" y="808">
+    <point/>
+   </object>
+   <object id="74" type="enemy" x="352" y="841.333">
+    <point/>
+   </object>
+   <object id="46" type="enemy" x="370.667" y="865.333">
+    <point/>
+   </object>
+   <object id="69" type="enemy" x="254.667" y="882.667">
+    <point/>
+   </object>
+   <object id="55" type="enemy" x="461.333" y="841.333">
+    <point/>
+   </object>
+   <object id="70" type="enemy" x="485.333" y="946.667">
+    <point/>
+   </object>
+   <object id="51" type="enemy" x="236" y="736">
+    <point/>
+   </object>
+   <object id="64" type="enemy" x="332" y="761.333">
+    <point/>
+   </object>
+   <object id="84" type="enemy" x="320" y="889.333">
+    <point/>
+   </object>
+   <object id="35" type="enemy" x="369.333" y="1537.33">
+    <point/>
+   </object>
+   <object id="38" type="enemy" x="274.667" y="817.333">
+    <point/>
+   </object>
+   <object id="71" type="enemy" x="226.667" y="889.333">
+    <point/>
+   </object>
+   <object id="56" type="enemy" x="309.333" y="797.333">
+    <point/>
+   </object>
+   <object id="77" type="enemy" x="276" y="918.667">
+    <point/>
+   </object>
+   <object id="36" type="enemy" x="376" y="1445.33">
+    <point/>
+   </object>
+   <object id="45" type="enemy" x="300" y="758.667">
+    <point/>
+   </object>
+   <object id="81" type="enemy" x="286.667" y="882.667">
+    <point/>
+   </object>
+   <object id="60" type="enemy" x="396" y="784">
+    <point/>
+   </object>
+   <object id="78" type="enemy" x="369.333" y="790.667">
+    <point/>
+   </object>
+   <object id="47" type="enemy" x="408" y="748">
+    <point/>
+   </object>
+   <object id="82" type="enemy" x="404" y="904">
+    <point/>
+   </object>
+   <object id="59" type="enemy" x="489.333" y="780">
+    <point/>
+   </object>
+   <object id="80" type="enemy" x="505.333" y="900">
+    <point/>
+   </object>
+   <object id="54" type="enemy" x="257.333" y="681.333">
+    <point/>
+   </object>
+   <object id="66" type="enemy" x="353.333" y="706.667">
+    <point/>
+   </object>
+   <object id="37" type="enemy" x="430.667" y="1492">
+    <point/>
+   </object>
+   <object id="42" type="enemy" x="497.333" y="678.667">
+    <point/>
+   </object>
+   <object id="48" type="enemy" x="504" y="729.333">
+    <point/>
+   </object>
+   <object id="85" type="enemy" x="473.333" y="876">
+    <point/>
+   </object>
+   <object id="10" type="enemy" x="342.667" y="2434.67">
+    <point/>
+   </object>
+   <object id="20" type="enemy" x="348" y="1965.33">
+    <point/>
+   </object>
+   <object id="15" type="enemy" x="337.333" y="2366.67">
+    <point/>
+   </object>
+   <object id="26" type="enemy" x="412" y="1942.67">
+    <point/>
+   </object>
+   <object id="11" type="enemy" x="361.333" y="2416">
+    <point/>
+   </object>
+   <object id="23" type="enemy" x="380" y="1956">
+    <point/>
+   </object>
+   <object id="17" type="enemy" x="356" y="2348">
+    <point/>
+   </object>
+   <object id="28" type="enemy" x="366.667" y="1989.33">
+    <point/>
+   </object>
+   <object id="12" type="enemy" x="381.333" y="2444">
+    <point/>
+   </object>
+   <object id="19" type="enemy" x="436" y="1976">
+    <point/>
+   </object>
+   <object id="14" type="enemy" x="376" y="2376">
+    <point/>
+   </object>
+   <object id="25" type="enemy" x="390.667" y="1978.67">
+    <point/>
+   </object>
+   <object id="13" type="enemy" x="400" y="2416">
+    <point/>
+   </object>
+   <object id="22" type="enemy" x="386.667" y="2001.33">
+    <point/>
+   </object>
+  </objectgroup>
+  <objectgroup color="#55ffff" id="9" name="Object Layer 5">
+   <object id="5" type="counter" x="197" y="162" width="373" height="138.667"/>
+  </objectgroup>
+ </group>
+</map>

@@ -1,9 +1,12 @@
 -- main --
 
+-- music https://opengameart.org/content/time-to-puzzle-it-up
+
 local newSpriteSheet = require "src.engines.spritesheet"
 local newSpritePatch = require "src.engines.spritepatch"
 
 local Game = require "src.engines.game"
+
 
 function love.load()
     
@@ -18,13 +21,40 @@ function love.load()
         bottom = 16,
     })
     
+    g_MusicPuzzle = love.audio.newSource("assets/music/time to puzzle_Master.ogg", "stream")
+    g_MusicPuzzle:setLooping(true)
+    
     g_TilesetSaa = require("assets/textures/saa_tt_sheet")
     
     local font = love.graphics.newFont("assets/textures/pmpaact_sheet_sized export.fnt")
     love.graphics.setFont(font)
     
-    g_Game = Game.new("game_a", {
+    g_Data = {
         
+        musicVolume = 1,
+        
+        setMusicVolume = function (self, v)
+            self.musicVolume = math.min(math.max(math.floor(v), 0), 10)
+            g_MusicPuzzle:setVolume(self.musicVolume * 0.1)
+        end,
+        
+        getActualMusicVolume = function (self)
+            return self.musicVolume * 0.1
+        end,
+        
+        curSelectedLevel = 1,
+        
+        levels = {},
+    }
+    for i = 1, 8 do
+        g_Data.levels[i] = { count=0 }
+    end
+    
+    g_MusicPuzzle:setVolume(g_Data:getActualMusicVolume())
+    
+    g_Game = Game.new("option", {
+        
+        ["option"] = require("src/scenes/option"),
         ["menu"] = require("src/scenes/menu"),
         ["game_a"] = require("src/scenes/game-a"),
         

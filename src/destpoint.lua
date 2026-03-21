@@ -50,7 +50,7 @@ function DestPoint:update(dt)
 end
 
 function DestPoint:draw()
-    love.graphics.setColor(0.2, 0.2, 0.2, 1)
+    love.graphics.setColor(0.6, 1, 0.21, 1)
     love.graphics.circle("line", self.x, self.y, 50, 50)
 end
 

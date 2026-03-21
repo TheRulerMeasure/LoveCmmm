@@ -73,6 +73,10 @@ function Ball:update(dt)
     elseif vx < -50 then
         self.sprFacingRight = false
     end
+    
+    if self.body:getY() > (g_DestPoint.y + 445) then
+        self._dead = true
+    end
 end
 
 function Ball:draw()

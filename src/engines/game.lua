@@ -19,6 +19,7 @@ function Game.new(initialScene, scenes)
         accumulator = 0,
         
         nextScene = nil,
+        sceneData = nil,
         
     }, mtGame)
     
@@ -61,13 +62,15 @@ function Game:sceneTransit()
     
     callMethod(self.curScene, "leave")
     self.curScene = self.scenes[self.nextScene]
-    callMethod(self.curScene, "arrive")
+    callMethod(self.curScene, "arrive", self.sceneData)
     
     self.nextScene = nil
+    self.sceneData = nil
 end
 
-function Game:setNextScene(nextScene)
+function Game:setNextScene(nextScene, sceneData)
     self.nextScene = nextScene
+    self.sceneData = sceneData
 end
 
 return Game
